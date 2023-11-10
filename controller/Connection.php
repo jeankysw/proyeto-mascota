@@ -1,19 +1,22 @@
  <?php
 
+ 
     class DatabaseConnection {
+     
     
-        public function __construct() {
-            $this->servername = $_ENV["SERVER"];
-            $this->username = $_ENV["USER"];
-            $this->password = $_ENV["PASS"];
-            $this->database = $_ENV["DB"];
-            $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->database);
-        }
     
-        public function getConnection() {
-            return $this->conn;
+        public function getConnection(){
+            $servername = $_ENV["SERVER"];
+            $username = $_ENV["USER"];
+            $password = $_ENV["PASS"];
+            $database = $_ENV["DB"];
+            $conn = new mysqli($servername, $username, $password, $database);
         
+      
+        return $conn;
     }
+    
+    
 }
     ?>
     

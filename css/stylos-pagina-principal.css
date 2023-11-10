@@ -48,9 +48,14 @@ nav li {
 
     border: solid none;
     padding: 0.5vw vw;
+    border-bottom: solid 4px #333; 
+    transition: all 300ms;
+    border-bottom-width: 10%;
 }
 nav li:hover{
     border-bottom: solid 4px #095fff; 
+    transition: all 300ms;
+    border-bottom-width: 50%;
 }
 nav a {
     text-decoration: none;
@@ -94,11 +99,7 @@ nav a {
     margin-right: -0px;
 }
 
-.profile:hover .profile-name {
-  opacity: 1;
-    margin-right: 0px;
-    
-}
+
 .conten-image{
     width: 100%;
     height: 80;
@@ -188,6 +189,12 @@ nav a {
     display: flex;
     flex-wrap: wrap;
 }
+.row2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
 
 .col-md-6 {
   
@@ -198,39 +205,6 @@ nav a {
 .col-md-6 img {
     margin-top: 3vw;
 }
-
-.contenedor_perfil {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Esto hace que el contenedor sea redondo */
-    background-color: #3498db;
-    position: relative; /* Necesario para posicionar el div hijo */
-}
-
-.hover-div {
-    display: none;
-    position: absolute;
-    left: -300px;
-    top: 0;
-    width: 300px;
-    height: 40px;
-    background-color: #e74c3c;
-    color: #fff;
-    text-align: center;
-    line-height: 40px;
-    transition: left 0.3s; /* Agregamos una transición para que el div aparezca suavemente */
-}
-
-.contenedor_perfil:hover .hover-div {
-    display: block;
-    left: 40px; /* La posición a la izquierda del contenedor redondo */
-}
-
-
-
-
-
-
 
 
 
@@ -243,8 +217,8 @@ footer {
     width: 100%;
     background-color: #333;
     color: #fff;
-    padding: 40px 50px;
-    padding: 40px 0;
+    gap: 100px;
+    padding: 40px 0px;
 }
 
 footer h3 {

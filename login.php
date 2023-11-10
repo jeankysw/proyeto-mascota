@@ -25,7 +25,7 @@
                     justify-content: center;
                     display: flex;
                     flex-direction: column;    
-                    max-width: 500px
+                    max-width: 500px;
                     max-height: 400px;
                     align-items: center;
                 }
@@ -44,16 +44,16 @@
             // require_once (__DIR__ . './controller/Connection.php');
             // $conn = new Connection;
         
-                require_once("./controller/Connection.php"); 
+            require_once(__DIR__ . "../controller/Connection.php");
                 $dbConnection = new DatabaseConnection();
                 $conn = $dbConnection->getConnection();
                 
-                if ($conn->connect_error) {
-                    die("Error de conexión: " . $conn->connect_error);
-                }// Asegúrate de que la ruta sea correcta
-
-            require_once (__DIR__ . './controller/user.controller .php');
-            
+                if (isset($_POST["Iniciarsesion"])) {
+                    require_once(__DIR__ . "/process/session.controller2.php");
+                    
+                    
+                }
+    
         
             ?>
             <form  method="POST" id="login-form">

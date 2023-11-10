@@ -70,34 +70,16 @@
             </div>
         </div>
     </section>
-    <div style="display=none" class="contenedor_perfil">
-        <div class="hover-div">Contenido al hacer hover</div>
-    </div>
 
-    <section id="services">
-        <div class="contenedor_servicios">
-            <h1>Nuestros Servicios </h1>
-            <div class="conten-servicios-dentro">
-                    <div class="conten-img-servicios">
-                        <h2>Servicios de Consulta Veterinaria General</h2>
-                    </div>
-                    <div class="conten-img-servicios">
-                        <h2>Servicio de Vacunación y Desparasitación</h2>
-                    </div>
-                    <div class="conten-img-servicios">
-                        <h2> Servicio de Cirugía Veterinaria</h2>
-                    </div>
-                        
-                       
-        
-                </div>
-             
-            </div>
-        </div>
-    </section>
     <footer>
         <div class="contenedor-piedepagina">
-            <div class="row">
+            <div class="row2">
+                <div class="col-md-6">
+                    <h3>Contacto</h3>
+                    <p>Dirección: 123 Calle de las Mascotas</p>
+                    <p>Teléfono: (123) 456-7890</p>
+                    <p>Email: info@vacupets.com</p>
+                </div>
                 <div class="col-md-6">
                     <h3>Contacto</h3>
                     <p>Dirección: 123 Calle de las Mascotas</p>

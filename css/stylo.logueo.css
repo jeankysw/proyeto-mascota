@@ -1,0 +1,99 @@
+
+.contenedor_perfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    background-color: #3498db;
+    position: relative; 
+}
+
+.hover-div {
+   
+    display: none;
+    position: absolute;
+    left: -339px;
+  border-radius: 1vw;
+    top: 30px;
+    width: 25vw;
+    height: 18vw;
+    background-color: #e74c3c;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    transition: all 300ms;
+}
+
+.contenedor_perfil:hover .hover-div {
+   opacity: 1;
+    display: block;
+    right: 40px;
+    transition: all 300ms;  
+}
+.conten_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   
+    margin: auto;
+    margin-top: -20px;
+}
+.conten_img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.hover-div h3{
+margin-left: -20px;
+margin-top: -20px;
+position: absolute;
+}
+
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-top: -55px;
+   position: relative;
+}
+.input-wrapper input[type="file"] {
+    display: none;
+}
+.file-label {
+   
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 10px;
+     cursor: pointer;
+}
+
+.file-label img {
+    width: 100%; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100%;
+}
+.btn-perfil{
+    padding: 10px 90px;
+    border-radius: 2vw;
+    margin:2vw auto;
+    border: none;
+}
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+.contenedor_cuerpo{
+    padding: 7vw 2vw;
+}

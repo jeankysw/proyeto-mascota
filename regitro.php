@@ -19,10 +19,15 @@
             use Dotenv\Dotenv;
            $dotenv = Dotenv::createImmutable(__DIR__);
            $dotenv->load();
-           
-           require_once (__DIR__ . './controller/Connection.php');
-        
-           include('./controller/controller.registro.php')
+         
+           require_once("./controller/Connection.php");    
+           $dbConnection = new DatabaseConnection();
+                $conn = $dbConnection->getConnection();
+                
+                if (isset($_POST["registrar"])) {
+                    require_once ("./process/create-user.php");
+                        
+                }
 
             ?>
             <form  method="POST" id="registro-form">

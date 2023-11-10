@@ -1,7 +1,7 @@
 
 const botonIngresar = document.getElementById('redirigir');
 botonIngresar.addEventListener('click', () => {
-    window.location.href = 'login.php'; 
+    
 });
 const botoniniciarsesion = document.getElementById('registrar');
 botoniniciarsesion.addEventListener('click', () => {
