@@ -31,7 +31,7 @@ if (!isset($_SESSION['usuario'])) {
             <nav>
                 <ul>
                 <li><a href="home.php">Home</a></li>
-                    <li><a href="tipo-mascotas.php">tipo mascotas</a></li>
+                    <li><a href="vacunas.php">Vacunas</a></li>
                     <li><a href="mascotas.php">mascotas</a></li>
                     <li><a href="registrar-razas">Razas</a></li>
                 </ul>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['usuario'])) {
         <div onclick="togglePerfilMostrar()"   
         class="contenedor_perfil">
         <?php ?>
-            <img src="<?php $rutaImagen ?>" alt="ostrar">
+            <img src="" alt="PERFIL">
             <div  id="perfil-mostrar" class="hover-div oculto">
                 
                 <span class="cerrar" onclick="cerrarperfil()">&times;</span>
