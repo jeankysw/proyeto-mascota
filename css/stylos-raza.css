@@ -1,0 +1,41 @@
+.raza{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+}
+.conten-igual{
+    width: 40%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+}
+
+ label {
+    display: block;
+    margin-bottom: 5px;
+}
+table{
+    background-color: #fff;
+}
+
+input[type="text"],
+input[type="submit"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+#nombre_raza{
+    width: 80%;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

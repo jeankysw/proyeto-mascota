@@ -7,13 +7,20 @@ if (!isset($_SESSION['usuario'])) {
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home pets</title>
+    <title>Vacunas</title>
+     <link rel="stylesheet" href="../css/stylos-pagina-principal.css">
+    <link rel="stylesheet" href="../css/stylo.logueo.css">
+    <link rel="stylesheet" href="../css/stylocsseditar.css">
+    <link rel="stylesheet" href="../css/stylos-mascotas.css">
     <link rel="stylesheet" href="./css/stylos-pagina-principal.css">
     <link rel="stylesheet" href="./css/stylo.logueo.css">
+    <link rel="stylesheet" href="./css/stylos-vacunas.css">
     <link rel="stylesheet" href="./css/stylocsseditar.css">
+    <link rel="stylesheet" href="./css/stylos-mascotas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
@@ -24,15 +31,18 @@ if (!isset($_SESSION['usuario'])) {
             <div class="logo">Pets Lovers</div>
             <nav>
                 <ul>
-                <li><a href="home.php">Home</a></li>
-                    <li><a href="tipo-mascotas.php">tipo mascotas</a></li>
+                  <li><a href="home.php">Home</a></li>
+                    <li><a href="vacunas.php">Vacuna</a></li>
                     <li><a href="mascotas.php">mascotas</a></li>
                     <li><a href="registrar-razas">Razas</a></li>
                 </ul>
             </nav>
             
  <div onclick="togglePerfilMostrar()"   class="contenedor_perfil">
+ <?php $ruta= $_SESSION['ruta_imagen'] ?>
+    <img src="<?php $ruta ?>" alt="mostrar">
     <div  id="perfil-mostrar" class="hover-div oculto">
+        
         <span class="cerrar" onclick="cerrarperfil()">&times;</span>
         <?php
          require_once __DIR__. "../vendor/autoload.php";
@@ -41,8 +51,8 @@ if (!isset($_SESSION['usuario'])) {
          $dotenv->load();
         ?>
         
-    <div style="margin-bottom: 25px;" class="conten_img">
-    <?php 
+    <div  style="margin-bottom: 25px;"  class="conten_img">
+               <?php 
                 
                 require_once( "texto.php");
                 if (isset($_SESSION['usuario'])) {
@@ -62,16 +72,18 @@ if (!isset($_SESSION['usuario'])) {
                         $correo = $row['email'];
                        
                     } 
-                
                     $conn->close();
                 } 
                 ?>               
-                          
+                                  
     </div>
-      
-    <h3 class="name"  ><?php echo" $nombre " ?></h3>
-    <div class="conten_btn"><button class="Edita-img" onclick="mostrarFormularioimg()">Editar</button>         <!-- codigo php -->
-    <form action="./process/cerrar-session.php" method="post">
+    <h3 class="name"><?php echo" $nombre " ?></h3>
+
+
+    <div class="conten_btn">
+        
+    <button class="Edita-img" onclick="mostrarFormularioimg()">Editar</button>         
+   <form action="./process/cerrar-session.php" method="post">
     <button type="submit" class="btn-perfil" name="cerrarSesion">Cerrar sesión</button>
 </form>
     </div>
@@ -82,49 +94,78 @@ if (!isset($_SESSION['usuario'])) {
     </header>
 </div>
    
-<div class="contenedor_cuerpo">
-    <?php   
-    $dbConnection = new DatabaseConnection();
-    $conn = $dbConnection->getConnection();
-    $users=new cruduser();
-    $leer=$users->read();
 
-    echo "<table border='1'>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>usuario</th>
-            <th>Correo electrónico</th>
-            <th>Contraseña </th>
-            <th>Role</th>        
-            <!-- Agrega más columnas según tu esquema de base de datos -->
-        </tr>";
-                     
-    foreach ($leer as $fila) {
-            echo "<tr>
-                    
-            <td>" . $fila["id"] .  "</td>
-            <td>" . $fila["nombre"] . "</td>
-            <td>" . $fila["username"] . "</td>
-            <td>" . $fila["email"] . "</td>
-            <td>" . $fila["password"] . "</td>
-            <td>" . $fila["Role_id"] . " </td>
-            <td><button type='submit id='actualizar' name='actualizar'> editar</button></td>
-            <td><button name='eliminar'> <a href='./process/actualizar.php'>eliminaer</button></td>
-            </tr>";
-                }
-            echo "</table>";
-?>
+<div class="contenedor_cuerpo-mascotas2">
+    <div class="conten-igual1">
+    <h3>Registrar Vacunas</h3>
+    <form action="" method="POST">
+    
+        <input type="text" id="nombre_vacuna" name="nombrevacuna"><br><br>
+        <button type="submit" name="nombre_vacuna"  class="btnvacuna"><i class="fas fa-syringe icono"></i> Agregar Vacuna</button>
+    </form>
+
+    </div>
+    <?php
+        require_once(__DIR__."./controller/CRUD.vacuna.php");
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nombre_vacuna'])) {
+            $nombreVacuna = $_POST['nombrevacuna'];
+            $crudVacuna = new CRUDvacuna();
+            $mensaje = $crudVacuna->crearVacuna($nombreVacuna);
+            if ($mensaje){
+                echo'
+                  
+                    <link rel="stylesheet" href="../css/stylos-mascotas.css">
+                    <div style="display: block;" id="fondoOscurovac" ></div>
+                    <div id="confirmacion" class="alerta img_gif" style="display: block;">
+                    <div class="div-border">
+                    <img src="./imagenes/Check animation.gif">
+                    </div>
+                    <h3> Vacuna agregada exitosamente </h3>  
+                    </div>';
+            }
+        }
+        ?>
+
+<table>
+    <tr>
+        <th>Mascota</th>
+        <th>Vacuna</th>
+        <th>Fecha</th>
+        <th>Accion</th>
+        <th>Accion</th>
+    </tr>
+    <?php
+     require_once './controller/CRUD.vacuna.php';
+
+     $vacunasclass = new CRUDvacuna();
+ 
+     
+     $vacunas = $vacunasclass->leerVacunasMascota(); 
+ 
+     foreach ($vacunas as $vacuna) {
+         echo "<tr>";
+         echo "<td>" . $vacuna["nombre_mascota"] . "</td>";
+         echo "<td>" . $vacuna["nombre_vacuna"] . "</td>";
+         echo "<td>" . $vacuna["fecha"] . "</td>";
+        echo '<td class="centrar"><a onclick="modaleditar()" href="./process/actualizar-mascotas.php?id=' . $vacuna['nombre_mascota'] . '"><i class="fas fa-edit"></i></a></td>';
+        echo '<td class="centrar"><a href="./process/eliminar-mascota.php?id=' . $vacuna['nombre_mascota'] . '"><i class="fas fa-trash-alt"></i></a></td>';
+        echo "</tr>";
+         ;
+     }
+    
+    ?>
+                   
+</table>
+
+
+
 
 
 <?php 
+   
 
  require_once(__DIR__ ."./process/agregar_imagen.php");
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "mydb";
-                        
             $handler = new Agregar_imagen();
                         
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enviar'])) {
@@ -194,7 +235,8 @@ if (!isset($_SESSION['usuario'])) {
 
    
 </body>
-<script src="./javascript/script-pagina-principal.js"></script>
 <script src="./javascript/script-pagina-mascotas.js"></script>
+<script src="./javascript/script-pagina-principal.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </html>

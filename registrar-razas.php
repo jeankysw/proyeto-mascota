@@ -10,10 +10,16 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home pets</title>
+    <title>Registrar Razas</title>
+    <link rel="stylesheet" href="../css/stylos-pagina-principal.css">
+    <link rel="stylesheet" href="../css/stylo.logueo.css">
+    <link rel="stylesheet" href="./css/stylos-raza.css">
+    <link rel="stylesheet" href="../css/stylocsseditar.css">
+    <link rel="stylesheet" href="../css/stylos-mascotas.css">
     <link rel="stylesheet" href="./css/stylos-pagina-principal.css">
     <link rel="stylesheet" href="./css/stylo.logueo.css">
     <link rel="stylesheet" href="./css/stylocsseditar.css">
+    <link rel="stylesheet" href="./css/stylos-mascotas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
@@ -31,19 +37,22 @@ if (!isset($_SESSION['usuario'])) {
                 </ul>
             </nav>
             
- <div onclick="togglePerfilMostrar()"   class="contenedor_perfil">
-    <div  id="perfil-mostrar" class="hover-div oculto">
-        <span class="cerrar" onclick="cerrarperfil()">&times;</span>
-        <?php
-         require_once __DIR__. "../vendor/autoload.php";
-         use Dotenv\Dotenv;
-         $dotenv = Dotenv::createImmutable(__DIR__);
-         $dotenv->load();
-        ?>
-        
-    <div style="margin-bottom: 25px;" class="conten_img">
-    <?php 
+        <div onclick="togglePerfilMostrar()"   
+        class="contenedor_perfil">
+        <?php ?>
+            <img src="<?php $rutaImagen ?>" alt="ostrar">
+            <div  id="perfil-mostrar" class="hover-div oculto">
                 
+                <span class="cerrar" onclick="cerrarperfil()">&times;</span>
+                <?php
+                require_once __DIR__. "../vendor/autoload.php";
+                use Dotenv\Dotenv;
+                $dotenv = Dotenv::createImmutable(__DIR__);
+                $dotenv->load();
+                ?>
+        
+    <div  style="margin-bottom: 25px;"  class="conten_img">
+               <?php 
                 require_once( "texto.php");
                 if (isset($_SESSION['usuario'])) {
                     $nombreUsuario = $_SESSION['usuario'];
@@ -66,64 +75,131 @@ if (!isset($_SESSION['usuario'])) {
                     $conn->close();
                 } 
                 ?>               
-                          
-    </div>
-      
-    <h3 class="name"  ><?php echo" $nombre " ?></h3>
-    <div class="conten_btn"><button class="Edita-img" onclick="mostrarFormularioimg()">Editar</button>         <!-- codigo php -->
-    <form action="./process/cerrar-session.php" method="post">
-    <button type="submit" class="btn-perfil" name="cerrarSesion">Cerrar sesión</button>
-</form>
-    </div>
-    </div>
+                                    
+            </div>
+            <h3 class="name" ><?php echo" $nombre " ?></h3>
+            <div class="conten_btn">
+                
+            <button class="Edita-img" onclick="mostrarFormularioimg()">Editar</button>         
+        <form action="./process/cerrar-session.php" method="post">
+            <button type="submit" class="btn-perfil" name="cerrarSesion">Cerrar sesión</button>
+        </form>
+            </div>
+            </div>
                
             </div>
         </div>
     </header>
 </div>
    
-<div class="contenedor_cuerpo">
-    <?php   
-    $dbConnection = new DatabaseConnection();
-    $conn = $dbConnection->getConnection();
-    $users=new cruduser();
-    $leer=$users->read();
-
-    echo "<table border='1'>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>usuario</th>
-            <th>Correo electrónico</th>
-            <th>Contraseña </th>
-            <th>Role</th>        
-            <!-- Agrega más columnas según tu esquema de base de datos -->
-        </tr>";
-                     
-    foreach ($leer as $fila) {
-            echo "<tr>
-                    
-            <td>" . $fila["id"] .  "</td>
-            <td>" . $fila["nombre"] . "</td>
-            <td>" . $fila["username"] . "</td>
-            <td>" . $fila["email"] . "</td>
-            <td>" . $fila["password"] . "</td>
-            <td>" . $fila["Role_id"] . " </td>
-            <td><button type='submit id='actualizar' name='actualizar'> editar</button></td>
-            <td><button name='eliminar'> <a href='./process/actualizar.php'>eliminaer</button></td>
-            </tr>";
+<div class="contenedor_cuerpo-mascotas raza">
+    <div class="conten-igual">
+<h2>Registrar Nueva Raza</h2>
+<form method="post" action="">
+<label for="animales">Seleccione una Mascota:</label>
+        <select id="animales" name="animal" class="styled-select">
+            <?php
+            $databaseConnection = new DatabaseConnection();
+            $conn = $databaseConnection->getConnection();
+            $query = "SELECT * FROM TipoMascota";
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['id'] . "'>" . $row['nombre'] . "</option>";
                 }
-            echo "</table>";
+            }
+            ?>
+        </select>
+        <label for="nombre_raza"><i class="fas fa-paw"></i> Nombre de la Raza:</label>
+        <input required type="text" id="nombre_raza" name="nombre_raza"><br><br>
+        <input type="submit" name="registrar_raza" value="Registrar Raza">
+    </form>
+</div>
+<div class="conten-igual">
+
+<?php if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registrar_raza'])) {
+                
+                $nombreRaza = $_POST['nombre_raza'];
+                $id= $_POST['animal'];
+                $nombreRaza = $_POST['nombre_raza'];
+
+                $sql = "INSERT INTO Raza (nombre,TipoMascota_id) VALUES ('$nombreRaza','$id')";
+                $resultt=$conn->query($sql);
+                if ($resultt) {
+     
+                }
+} 
+
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cantidad de Mascotas por Raza</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            overflow-y: auto;
+            height: 350px;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cantidad de Mascotas por Raza</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Raza</th>
+                <th>Cantidad de Mascotas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $sql = "SELECT Raza.nombre AS nombre_raza, COUNT(Mascota.id) AS cantidad_mascotas 
+            FROM Raza LEFT JOIN Mascota ON Raza.id = Mascota.Raza_id 
+            GROUP BY Raza.nombre";
+    
+            $result = $conn->query($sql);
+    
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["nombre_raza"] . "</td>";
+                    echo "<td>" . $row["cantidad_mascotas"] . "</td>";
+                    echo "</tr>";
+                }
+            } 
+        
+            ?>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
+
+<?php
+?>
+
+
+
+
+
+</div>
 
 <?php 
 
  require_once(__DIR__ ."./process/agregar_imagen.php");
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "mydb";
                         
             $handler = new Agregar_imagen();
                         
@@ -194,7 +270,8 @@ if (!isset($_SESSION['usuario'])) {
 
    
 </body>
-<script src="./javascript/script-pagina-principal.js"></script>
 <script src="./javascript/script-pagina-mascotas.js"></script>
+<script src="./javascript/script-pagina-principal.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </html>

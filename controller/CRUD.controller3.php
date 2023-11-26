@@ -33,7 +33,7 @@ class cruduser extends DatabaseConnection
     public function read()
     {
         $conexion =  $this->getConnection();
-        $sql = "SELECT id, user FROM username";
+        $sql = "SELECT * FROM user";
         $result = $conexion->query($sql);
         $users = [];
         if ($result->num_rows > 0) {
@@ -45,27 +45,17 @@ class cruduser extends DatabaseConnection
     }
     
 
-    public function update($id, $name, $username, $email , $password, $role)
+    public function update($name)
     {
-        //conexion de la base de datos
         $mysqli = $this->getConnection();
-
-        // Sanitizar los datos
         $newName = $mysqli->real_escape_string($name);
-        $newusername = $mysqli->real_escape_string($username);
-        $newemail = $mysqli->real_escape_string($email);
-        $newpassword = $mysqli->real_escape_string($password);
-        
-        // Consulta para actualizar los datos
-        $sql = "UPDATE 'user' SET name = '$newName', username = '$newusername', email = '$newemail', password = '$newpassword' WHERE id = $id";
-        
-        //miramos si se actualizo
+        $id1=1;
+        $sql = "UPDATE 'user' SET name = '$newName' WHERE id = $id1";
         if ($mysqli->query($sql)) {
             echo "Registro actualizado con éxito.";
         } else {
             echo "Error al actualizar el registro: " . $mysqli->error;
         }
-        // Cerramos la conexion a la base de datos
         $mysqli->close();
     }
 

@@ -143,7 +143,7 @@ nav a {
 }
 .botones button{
      margin-right: 1vw;
-    padding: 0.1vw 2vw;
+    padding: 0.5vw 2vw;
     border-radius: 2vw;
     transition: all 300ms;
     font-size: 13px;
@@ -205,6 +205,59 @@ nav a {
 .col-md-6 img {
     margin-top: 3vw;
 }
+.form{
+    display: flex;
+}
+
+.submit{
+    margin: auto;
+    width: 20%;
+    min-width: 250px;
+    height: 40px;
+    padding: 25px 5px 0px 5px;
+    position: relative;
+    user-select: none;
+}
+.submit__title{
+    
+    position: absolute;
+    top: 30px;
+
+    width: max-content;
+    opacity: 1;
+    font-size: .9rem;
+    font-weight: 200;
+    z-index: 99999;
+    user-select: none;
+    color: rgb(0, 0, 0);
+    transition: .2s ease-in-out;
+}
+.submit__input{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 85%;
+    color: rgb(0, 0, 0);
+    border: 0px;
+    border-bottom: 2px solid rgb(207, 207, 207);
+    background-color: transparent;
+}
+.submit__input:focus  {
+    border:none;
+    border-bottom: 2px solid #007BFF ;
+    outline: 0;
+}
+.submit__input:focus ~ .submit__title{
+    top:15px;
+    z-index: 99;
+    transition: .3s ease-in-out;
+    color: #007BFF;
+ }
+ .submit__input:focus{
+    color: #000000;
+ }
+ 
+
 
 
 
@@ -219,6 +272,7 @@ footer {
     color: #fff;
     gap: 100px;
     padding: 40px 0px;
+    bottom: 0;
 }
 
 footer h3 {
@@ -250,7 +304,7 @@ footer p {
 }
 
 .social-icons a:hover {
-    color: #00bfff; /* Cambia el color al hacer hover */
+    color: #00bfff; 
 }
 .contenedor_servicios{
     width: 98%;

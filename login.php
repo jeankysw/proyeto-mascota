@@ -1,7 +1,11 @@
-<!-- <h1>Bienvenido a INICIO</h1>
-<p>SALUDOS</p>
-<link rel="stylesheet" href="css/style.css"> -->
+<?php
+// session_start();
 
+// if (isset($_SESSION['usuario'])) {
+//     header("Location: home.php"); 
+//     exit();
+// }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +54,8 @@
                 
                 if (isset($_POST["Iniciarsesion"])) {
                     require_once(__DIR__ . "/process/session.controller2.php");
-                    
-                    
                 }
+                
     
         
             ?>
