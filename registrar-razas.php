@@ -209,7 +209,7 @@ if (!isset($_SESSION['usuario'])) {
                 echo $mensaje;
                 } 
             else {
-                echo'              
+                echo'                          
                 <div id="modal" class="modal">
                     <form class="form-img"  method="POST" id="form" enctype="multipart/form-data">   
                     <span class="cerrar" onclick="cerrarModal(event)">&times;</span>

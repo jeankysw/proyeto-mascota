@@ -39,8 +39,7 @@ if (!isset($_SESSION['usuario'])) {
             </nav>
             
  <div onclick="togglePerfilMostrar()"   class="contenedor_perfil">
- <?php $ruta= $_SESSION['ruta_imagen'] ?>
-    <img src="<?php $ruta ?>" alt="mostrar">
+ <img src="" alt="PERFIL">
     <div  id="perfil-mostrar" class="hover-div oculto">
         
         <span class="cerrar" onclick="cerrarperfil()">&times;</span>

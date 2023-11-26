@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?PHP session_start();
 
+if (isset($_SESSION['usuario'])) {
+    header("Location: home.php"); 
+    exit();
+}    ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +29,15 @@
                 <div class="profile-image"></div> -->
             
             <div  class="botones profile">  
-                <button id="login" class="logueo"> resgitrar</button>
+                <button  id="login" class="logueo"> <a style="color: white;" href="regitro.php">resgitrar</a></button>
               
-                <button id="registrar" class="registrar"> inicia_sesion</button>
-              
+                <button id="registrar" class="registrar"> <a style="color: white;" href="login.php">inicia_sesion</a>
+              <style>
+                .botones button a{
+                        text-decoration: none;
+                }
+
+              </style>
 
             </div>
         </header>
@@ -38,7 +48,7 @@
         <div class="conten--text">
             <h1>Pets lovers</h1>
             <p>"Salud y Felicidad para sus Compañeros Peludos."</p>
-            <button class="ingresar" id="redirigir">INGRESAR</button>
+            
         </div>
         <img src="./imagenes/fondoo.jpg" height="650px" width="100%" alt="">
 

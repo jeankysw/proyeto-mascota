@@ -63,9 +63,24 @@
                         $result= $conn->query($sql);
                         if($result){
 
-                        echo "Datos insertados correctamente.";
+                            echo' 
+
+                            <link rel="stylesheet" href="../css/stylos-mascotas.css">
+                             <div style="display: block;" id="fondoOscurore" ></div>
+                            <div id="confirmacion" class="alerta img_gif" style="display: block;">
+                            <div class="div-border">
+                            <img src="../imagenes/Check animation.gif">
+                            </div>
+                            <h3>Vacuna exitosa</h3>  
+                            </div>';
+                            
+                            header("location:../mascotas.php");
+                
+                
+                            }
                              }
-                                        }
+                                        
                 ?>
 </body>
 </html>
+<script src="../javascript/script-pagina-mascotas.js"></script>

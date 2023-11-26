@@ -25,7 +25,7 @@ if (!isset($_SESSION['usuario'])) {
             <nav>
                 <ul>
                 <li><a href="home.php">Home</a></li>
-                    <li><a href="vacunas.php{">vacunas</a></li>
+                    <li><a href="vacunas.php">vacuna</a></li>
                     <li><a href="mascotas.php">mascotas</a></li>
                     <li><a href="registrar-razas">Razas</a></li>
                 </ul>

@@ -10,9 +10,9 @@
     <h1>
         403
     </h1>
-    <p>usted no tiene permiso por ser racista </p>
+    <p>Acceso denegado</p>
     <div class="btn">
-    <button><a href="#">regresar al inicio</a> </button>
+    <button><a href="index.php">regresar al inicio</a> </button>
 
 </div>
 </div>
@@ -68,7 +68,7 @@
             margin: auto;
             font-size: 2vw;
             margin-top: -4vw;
-            margin-right:15vw ;
+            margin-right:23vw ;
             color:white;
         }
         .conte_text{

@@ -9,7 +9,7 @@ echo '
 <form method="post">
             <div id="alertaeli" style="display: block;">
             <img src="../imagenes/alert.jpg" alt="">
-            <h3>¿Estás seguro de querer eliminar esta mascota? se eliminaran todos los regitros asociados a ella</h3>
+            <h3>¿Estás seguro de querer eliminar esta mascota? /h3>
             <div class="div-boton-eliminar"> 
             <button id="confirmarEliminar"  onclick="redirigir2()" type="submit" name="confirmaciondelet"  class="btn-aceptar"><i class="fas fa-check"></i> Aceptar</button>
             <a href="../mascotas.php">  <div class="btn-cerrar"><i class="fas fa-times"></i>Cancelar</div>

@@ -16,7 +16,7 @@
     </h1>
     <p>los sentimos ruta no encontrada</p>
     <div class="btn">
-    <button><a href="#"> regresar al inicio</a > </button>
+    <button><a href="index.php"> regresar al inicio</a > </button>
     <img class="extencion" src="./imagenes/extencion.png" alt="">
 
 </div>

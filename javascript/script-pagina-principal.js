@@ -1,6 +1,7 @@
 
 const botonIngresar = document.getElementById('redirigir');
 botonIngresar.addEventListener('click', () => {
+  window.location.href="login.php";
     
 });
 const botonIngresa2 = document.getElementById('confirmarEliminar1');

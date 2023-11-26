@@ -47,10 +47,17 @@ setTimeout(function() {
     window.location.href = '../mascotas.php'; 
    
 }, 1800);
+
 setTimeout(function() {
   
     document.getElementById('fondoOscurovac').style.display = 'none';
-    window.location.href = './vacunas.php'; 
+    window.location.href = '../vacunas.php'; 
+   
+}, 1800);
+setTimeout(function() {
+  
+    document.getElementById('fondoOscurore').style.display = 'none';
+    window.location.href = '../vacunas.php'; 
    
 }, 1800);
 setTimeout(function() {
