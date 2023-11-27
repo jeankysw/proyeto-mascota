@@ -28,7 +28,11 @@
    
     <form action="" method="POST">
     <label for="valor">Mascota:</label><br>
-    <input type="text" id="valor" name="valor" value=" <?php echo $nombreMascota  ?>" readonly>
+    <input type="text" id="valor" name="feha" value=" <?php echo $nombreMascota  ?>" readonly>
+
+    <label for="fecha">fecha:</label>
+
+        <input type="date" id="fecha" name="fecha"  value="<?php echo date('Y-m-d'); ?>">
     
     <label for="vacuna">Seleccione una vacuna:</label><br>
         <select name="vacuna" id="vacuna" class="styled-select">
@@ -57,11 +61,34 @@
 
                 <?php 
                     if(isset($_POST['agregarvacuna'])){
-                        $vacuna_id = 1; 
-                        $fecha = '2023-11-26';
-                        $sql = "INSERT INTO ControlVacuna (Mascota_id, Vacuna_id, fecha) VALUES ( $id , $vacuna_id, $fecha)";
-                        $result= $conn->query($sql);
-                        if($result){
+                        $vacuna_id = $_POST['vacuna']; 
+                        $fechaActual = date('d/m/Y'); 
+                        $sql2="SELECT COUNT(*) AS 'Cantidad de Aplicaciones'
+                        FROM controlVacuna cv
+                        WHERE cv.Mascota_id = $id AND cv.Vacuna_id = $vacuna_id;
+                        ;
+                        ";
+                         $verificar= $conn->query($sql2);
+                         if ($verificar->num_rows > 0) {
+                            while ($row = $verificar->fetch_assoc()) {
+                              $cantidadAplicaciones = $row['Cantidad de Aplicaciones'];
+                            }
+
+                        if ( $cantidadAplicaciones>=1){
+                            echo '<link rel="stylesheet" href="../css/stylos-mascotas.css">
+                            <div style="display: block;" id="fondoOscurore" ></div>
+                           <div id="confirmacion" class="alerta img_gif" style="display: block;">
+                        
+                           <img src="../imagenes/alert.jpg">
+                           
+                           <h3>Esta vacuna ya fue aplicada</h3>  
+                           </div>';
+                        }
+                        else{
+                            $fechaActual=$_POST['fecha'];
+                            $sql = "INSERT INTO ControlVacuna (Mascota_id, Vacuna_id, fecha) VALUES ( $id , $vacuna_id, $fechaActual)";
+                            $result= $conn->query($sql);
+                            if($result){
 
                             echo' 
 
@@ -79,6 +106,8 @@
                 
                             }
                              }
+                            }
+                    }
                                         
                 ?>
 </body>

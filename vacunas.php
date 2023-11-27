@@ -99,7 +99,7 @@ if (!isset($_SESSION['usuario'])) {
     <h3>Registrar Vacunas</h3>
     <form action="" method="POST">
     
-        <input type="text" id="nombre_vacuna" name="nombrevacuna"><br><br>
+        <input type="text" id="nombre_vacuna" required name="nombrevacuna"><br><br>
         <button type="submit" name="nombre_vacuna"  class="btnvacuna"><i class="fas fa-syringe icono"></i> Agregar Vacuna</button>
     </form>
 

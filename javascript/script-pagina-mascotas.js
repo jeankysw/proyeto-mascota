@@ -51,7 +51,7 @@ setTimeout(function() {
 setTimeout(function() {
   
     document.getElementById('fondoOscurovac').style.display = 'none';
-    window.location.href = '../vacunas.php'; 
+    window.location.href = './vacunas.php'; 
    
 }, 1800);
 setTimeout(function() {
